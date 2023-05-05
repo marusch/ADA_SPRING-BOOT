@@ -7,9 +7,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//Implementacion de los metodos de la clase Interfaz "Persona Persona"
+//Declaramos nuestra clase como servicio
 @Service
 public class ImpPersonaServicio implements PersonaServicio {
 
+//Hacemos una inyección de la clase PersonaRepositorio para ocupar los metodos que nos proporciona JPA(crud)
     @Autowired
     private PersonaRepositorio personaRepositorio;
 

@@ -3,6 +3,7 @@ package com.example.EjercicioCrud.servicio;
 import com.example.EjercicioCrud.entidad.Persona;
 import java.util.List;
 
+//Lista de metodos que vamos a utilizar para el crud, gracias a JPARepository la logica estara por detras y sera mas facil su aplicacion
 public interface PersonaServicio {
 
     public List<Persona> listarTodosLasPersonas();
