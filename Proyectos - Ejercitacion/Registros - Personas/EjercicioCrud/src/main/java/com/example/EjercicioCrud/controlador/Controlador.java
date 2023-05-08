@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
+import java.util.Optional;
 
 //Declara la clase como un controlador
 @Controller
@@ -39,8 +41,37 @@ public class Controlador {
 
     //Permite enviar o guardar a la BD "registros" los datos que se completo en el formulario
     @PostMapping("/save")
-    public String Guardar(@ModelAttribute("estudiante") Persona persona){
+    public String Guardar(@ModelAttribute("persona") Persona persona){
         servicio.guardarPersona(persona);
+        return "redirect:/listar";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioDeEditar(@PathVariable Integer id, Model model){
+
+        model.addAttribute("persona", servicio.obtenerPersonaPorId(id));
+
+        return "editar_persona";
+    }
+
+    @PostMapping("/editar/{id}")
+    public String actualizarPersona(@PathVariable Integer id, @ModelAttribute("persona")
+    Persona persona, Model model){
+
+        Persona personaExistente = servicio.obtenerPersonaPorId(id);
+
+        personaExistente.setId(id);
+        personaExistente.setNombre(persona.getNombre());
+        personaExistente.setTelefono(persona.getTelefono());
+
+        servicio.actualizarPersona(personaExistente);
+
+        return "redirect:/listar";
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarPersona(@PathVariable Integer id) {
+        servicio.eliminarPersona(id);
         return "redirect:/listar";
     }
 

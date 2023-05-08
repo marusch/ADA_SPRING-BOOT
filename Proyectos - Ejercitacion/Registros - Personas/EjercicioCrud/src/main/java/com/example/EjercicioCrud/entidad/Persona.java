@@ -2,7 +2,7 @@ package com.example.EjercicioCrud.entidad;
 
 import jakarta.persistence.*;
 
-//Igual que en JPA- Declara una clasa como entidad, que sera una tabla con sus respectivas columnas
+//Igual que en JPA- Declara una clase como entidad, que sera una tabla con sus respectivas columnas
 @Entity
 @Table(name = "personas")
 public class Persona {

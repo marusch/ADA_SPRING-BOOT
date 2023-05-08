@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//Implementacion de los metodos de la clase Interfaz "Persona Persona"
+//Implementacion de los metodos de la clase Interfaz "Persona Servicio"
 //Declaramos nuestra clase como servicio
 @Service
 public class ImpPersonaServicio implements PersonaServicio {
@@ -29,16 +29,17 @@ public class ImpPersonaServicio implements PersonaServicio {
 
     @Override
     public Persona obtenerPersonaPorId(Integer id) {
-        return null;
+         return personaRepositorio.findById(id).get();
     }
 
     @Override
     public Persona actualizarPersona(Persona persona) {
-        return null;
+        return personaRepositorio.save(persona);
     }
 
     @Override
     public void eliminarPersona(Integer id) {
-
+        personaRepositorio.deleteById(id);
     }
+
 }
