@@ -20,6 +20,12 @@ public class Controlador {
     @Autowired
     private PersonaServicio servicio;
 
+    //Pagina de inicio
+    @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+
     //Trae la lista de personas registradas en el html denominado "index"
     @GetMapping("/listar")
     public String listar(Model model){
@@ -46,6 +52,7 @@ public class Controlador {
         return "redirect:/listar";
     }
 
+    //Direcciona a un nuevo formulario denominado "editar_persona"
     @GetMapping("/editar/{id}")
     public String mostrarFormularioDeEditar(@PathVariable Integer id, Model model){
 
@@ -54,6 +61,7 @@ public class Controlador {
         return "editar_persona";
     }
 
+    //Permite enviar o guardar a la BD "registros" actualizados
     @PostMapping("/editar/{id}")
     public String actualizarPersona(@PathVariable Integer id, @ModelAttribute("persona")
     Persona persona, Model model){
@@ -69,6 +77,7 @@ public class Controlador {
         return "redirect:/listar";
     }
 
+    //Permite eliminar los registros con los botones
     @GetMapping("/eliminar/{id}")
     public String eliminarPersona(@PathVariable Integer id) {
         servicio.eliminarPersona(id);
