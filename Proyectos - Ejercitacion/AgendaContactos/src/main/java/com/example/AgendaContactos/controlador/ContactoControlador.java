@@ -63,6 +63,7 @@ public class ContactoControlador {
      BindingResult bindingResult,RedirectAttributes redirect,Model modelo) {
 
         Contacto contactoDB = contactoServicio.obtenerContactoPorId(id);
+
         if(bindingResult.hasErrors()) {
             modelo.addAttribute("contacto", contacto);
             return "editar";
@@ -74,6 +75,7 @@ public class ContactoControlador {
         contactoDB.setFechaNacimiento(contacto.getFechaNacimiento());
 
         contactoServicio.guardarContacto(contactoDB);
+
         redirect.addFlashAttribute("msgExito", "El contacto " +
        "ha sido actualizado correctamente");
 
@@ -92,5 +94,5 @@ public class ContactoControlador {
         return "redirect:/";
     }
 
-
 }
+

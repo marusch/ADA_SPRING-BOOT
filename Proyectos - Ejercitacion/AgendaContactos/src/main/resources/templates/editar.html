@@ -29,6 +29,7 @@
         <br>
 
         <form th:action="@{/editar/{id}(id=${contacto.id})}" method="post" th:object="${contacto}">
+
             <div class="mb-3">
                 <label for="nombre">Nombre : </label> <input id="nombre"
                                                              type="text" placeholder="Digite su nombre " th:field="*{nombre}" class="form-control" th:errorClass="is-invalid">
